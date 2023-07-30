@@ -14,14 +14,16 @@ class App:
             if len(data) == 0:
                 print('Checking all specs with your SNILS...')
                 specsj = {}
-                data = check_snils_everywhere(snils)
-                for arr in data:
+                specs_data = check_snils_everywhere(snils)
+                for arr in specs_data:
                     if arr[0]:
                         specsj[arr[1]] = arr[2]
-                with open('specs.json', 'w', encoding='utf8') as specs:
-                    json.dump(specsj, specs, indent=4, ensure_ascii=False)
+                with open('specs.json', 'w', encoding='utf8') as specsToWrite:
+                    json.dump(specsj, specsToWrite, indent=4, ensure_ascii=False)
                     print(f'Loaded specs for SNILS: {snils}')
+                    data = specsj
             #	186-522-806 92
+            print(data)
 
 
 
